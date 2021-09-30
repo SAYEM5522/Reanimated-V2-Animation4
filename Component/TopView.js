@@ -30,7 +30,7 @@ const TopView = () => {
   return (
     <PanGestureHandler onGestureEvent={gestureHandler}>
     <Animated.View style={[styles.Container,animatedStyle]}>
-      <Header/>
+      <Header Y={Y}/>
       <View style={styles.RoundView}/>
     </Animated.View>
     </PanGestureHandler>

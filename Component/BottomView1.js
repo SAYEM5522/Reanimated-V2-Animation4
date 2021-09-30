@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
   Container:{
     height:ViewHeight,
     backgroundColor:'red',
-    borderTopLeftRadius:50
+    borderTopLeftRadius:50,
+    top:40
   }
 })
