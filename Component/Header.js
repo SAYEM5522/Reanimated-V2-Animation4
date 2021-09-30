@@ -2,12 +2,14 @@ import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
+import { Fontisto } from '@expo/vector-icons';
 const ImageWidth=190;
 const ImageHeight=190;
 const BorderRadious=100
 const Header = () => {
  
   return (
+    <>
     <View style={styles.Container}>
     <SimpleLineIcons name="arrow-left" size={24} style={{top:15}} color="black" />
     <View style={styles.ImageView}>
@@ -18,6 +20,8 @@ const Header = () => {
     </View>
     <Feather name="download"style={{top:15}} size={24} color="black" />
     </View>
+    <Fontisto name="arrow-expand" style={styles.BottomIcon} size={24} color="black" />
+    </>
   )
 }
 
@@ -42,5 +46,9 @@ const styles = StyleSheet.create({
     backgroundColor:"#b2bdcf",
     borderBottomLeftRadius:150,
     borderBottomRightRadius:150
+  },
+  BottomIcon:{
+    left:20,
+    top:6
   }
 })
