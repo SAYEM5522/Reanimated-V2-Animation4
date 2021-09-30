@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius:50
   },
   RoundView:{
-    width:90,
+    width:95,
     height:6.5,
     backgroundColor:'lightgray',
     alignSelf:'center',

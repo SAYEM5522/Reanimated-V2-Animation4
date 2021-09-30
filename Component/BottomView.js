@@ -14,4 +14,13 @@ const BottomView = () => {
 
 export default BottomView
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  RoundView:{
+    width:90,
+    height:6.5,
+    backgroundColor:'lightgray',
+    alignSelf:'center',
+    borderRadius:5,
+    top:8
+  }
+})

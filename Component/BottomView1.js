@@ -29,6 +29,7 @@ const BottomView1 = () => {
   return (
     <PanGestureHandler onGestureEvent={gestureHandler}>
     <Animated.View style={[styles.Container,animatedStyle]}>
+   
     </Animated.View>
     </PanGestureHandler>
   )
