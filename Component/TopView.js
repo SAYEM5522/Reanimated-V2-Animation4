@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import Animated, { useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated'
@@ -37,7 +37,7 @@ const TopView = () => {
   )
 }
 
-export default TopView
+export default memo(TopView)
 
 const styles = StyleSheet.create({
   Container:{
