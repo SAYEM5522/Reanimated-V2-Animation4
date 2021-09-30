@@ -4,27 +4,30 @@ import { AntDesign } from '@expo/vector-icons';
 import Animated, { Extrapolate, interpolate, useAnimatedStyle, withSpring } from 'react-native-reanimated';
 const TrackList = ({Y,index,song,name,img}) => {
   const config={
-    mass:1,
+    mass:0.5,
     damping:16,
     overshootClamping:false,
-    restDisplacementThreshold:0.1,
-    restSpeedThreshold:0.6
+    restDisplacementThreshold:0,
+    restSpeedThreshold:0.3
   }
+
   const ListTransForm=useAnimatedStyle(()=>{
     return{
       transform:[{
-        translateX:withSpring(interpolate(Y.value,[0,200],[0,(index+2)*120],Extrapolate.CLAMP),config)
+        
+        translateX:withSpring(interpolate(Y.value,[0,200],[0,(index==0||index==2||index==3)?(index==2||index==3)?(index==3)?index*60:index*70:300:(index)*180],Extrapolate.CLAMP),config)
       }]
     }
   })
   const imageTrandform=useAnimatedStyle(()=>{
     return{
       transform:[{
-        translateX:withSpring(interpolate(Y.value,[0,120],[0,(index)*50],Extrapolate.CLAMP),config)
+        translateX:withSpring(interpolate(Y.value,[0,200],[0,(index)*35],Extrapolate.CLAMP),config)
       }],
-      top:withSpring(interpolate(Y.value,[0,120],[0,-(index)*80],Extrapolate.CLAMP),config)
+      top:(interpolate(Y.value,[0,200],[0,-(index)*80],Extrapolate.CLAMP))
     }
   })
+
   return (
     <View style={styles.Container}>
      <Animated.Image
@@ -51,7 +54,7 @@ const styles = StyleSheet.create({
     borderRadius:30
   },
   Container:{
-    paddingHorizontal:25,
+    paddingHorizontal:20,
     paddingVertical:8,
     flexDirection:'row',
     alignItems:'center',

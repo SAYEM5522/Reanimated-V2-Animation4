@@ -35,7 +35,17 @@ const Item=[{
 
 const BottomView2 = () => {
   const Y = useSharedValue(0);
-
+  const config={
+    mass:0.5,
+    damping:16,
+    overshootClamping:false,
+    restDisplacementThreshold:0,
+    restSpeedThreshold:0.3
+  }
+  function clamp(value, lowerBound, upperBound) {
+    'worklet';
+    return Math.max(lowerBound, Math.min(value, upperBound));
+  }
   const gestureHandler = useAnimatedGestureHandler({
     onStart: (_, ctx) => {
       ctx.startY = Y.value;
@@ -46,7 +56,7 @@ const BottomView2 = () => {
     onEnd: (_) => {
       Y.value = withSpring(0);
       if(Y.value>100){
-        Y.value=withSpring(235)
+        Y.value=withSpring(235,config)
       }
     },
   });
@@ -54,7 +64,7 @@ const BottomView2 = () => {
     return {
       transform: [
         {
-          translateY: Y.value,
+          translateY:clamp( Y.value,0,233)
         },
       ],
     };

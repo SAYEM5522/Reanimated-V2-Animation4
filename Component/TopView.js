@@ -6,7 +6,17 @@ import Header from './Header'
 const TopViewHeight=330
 const TopView = () => {
   const Y = useSharedValue(0);
-
+  const config={
+    mass:1,
+    damping:16,
+    overshootClamping:false,
+    restDisplacementThreshold:0.1,
+    restSpeedThreshold:0.6
+  }
+  function clamp(value, lowerBound, upperBound) {
+    'worklet';
+    return Math.max(lowerBound, Math.min(value, upperBound));
+  }
   const gestureHandler = useAnimatedGestureHandler({
     onStart: (_, ctx) => {
       ctx.startY = Y.value;
@@ -15,14 +25,14 @@ const TopView = () => {
       Y.value = ctx.startY + event.translationY;
     },
     onEnd: (_) => {
-      Y.value = withSpring(0);
+      Y.value = withSpring(0,config);
     },
   });
   const animatedStyle = useAnimatedStyle(() => {
     return {
       transform: [
         {
-          translateY: Y.value,
+          translateY:clamp( Y.value,-200,0)
         },
       ],
     };
