@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { PanGestureHandler } from 'react-native-gesture-handler'
-import Animated, { useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated'
+import Animated, { Extrapolate, interpolate, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated'
 import Header from './Header'
 const TopViewHeight=330
 const TopView = () => {
@@ -17,6 +17,11 @@ const TopView = () => {
     'worklet';
     return Math.max(lowerBound, Math.min(value, upperBound));
   }
+  // const ContainerHeight=useAnimatedStyle(()=>{
+  //   return{
+
+  //   }
+  // })
   const gestureHandler = useAnimatedGestureHandler({
     onStart: (_, ctx) => {
       ctx.startY = Y.value;
@@ -32,16 +37,22 @@ const TopView = () => {
     return {
       transform: [
         {
-          translateY:clamp( Y.value,-200,0)
+          translateY:clamp( Y.value,-120,0)
         },
       ],
+
     };
   });
+  const ViewAnimation=useAnimatedStyle(()=>{
+    return{
+      top:interpolate(Y.value,[0,-100],[8,80],Extrapolate.CLAMP)
+    }
+  })
   return (
     <PanGestureHandler onGestureEvent={gestureHandler}>
     <Animated.View style={[styles.Container,animatedStyle]}>
       <Header Y={Y}/>
-      <View style={styles.RoundView}/>
+      <Animated.View style={[styles.RoundView,ViewAnimation]}/>
     </Animated.View>
     </PanGestureHandler>
   )
@@ -53,7 +64,8 @@ const styles = StyleSheet.create({
   Container:{
     height:TopViewHeight,
     backgroundColor:'#fff',
-    borderBottomRightRadius:50
+    borderBottomRightRadius:50,
+    height:320,
   },
   RoundView:{
     width:95,
