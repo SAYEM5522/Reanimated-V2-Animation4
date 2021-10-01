@@ -17,11 +17,7 @@ const TopView = () => {
     'worklet';
     return Math.max(lowerBound, Math.min(value, upperBound));
   }
-  // const ContainerHeight=useAnimatedStyle(()=>{
-  //   return{
 
-  //   }
-  // })
   const gestureHandler = useAnimatedGestureHandler({
     onStart: (_, ctx) => {
       ctx.startY = Y.value;

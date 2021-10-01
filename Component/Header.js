@@ -11,8 +11,7 @@ const BorderRadious=100
 
 const Header = ({Y}) => {
   const animation = useSharedValue(0)
-  const AnimatedIcon=Animated.createAnimatedComponent(Ionicons);
-  const AnimatedSimpleLine=Animated.createAnimatedComponent(SimpleLineIcons);
+
 
   useEffect(()=>{
     animation.value = withRepeat(withTiming(360,{
@@ -25,7 +24,7 @@ const Header = ({Y}) => {
 
   const WidthTransform=useAnimatedStyle(()=>{
     return{
-      width:interpolate(Y.value,[0,-120],[270,410],Extrapolate.CLAMP),
+      width:interpolate(Y.value,[0,-120],[270,415],Extrapolate.CLAMP),
       height:interpolate(Y.value,[0,-120],[270,117],Extrapolate.CLAMP),
       top:interpolate(Y.value,[0,-120],[0,120],Extrapolate.CLAMP),
       borderBottomLeftRadius:interpolate(Y.value,[0,-120],[150,75],Extrapolate.CLAMP),
@@ -39,9 +38,11 @@ const Header = ({Y}) => {
     transform:[{
       scale:interpolate(Y.value,[0,-120],[1,0.4],Extrapolate.CLAMP),
       
-    },{
-      rotate: animation.value + 'deg'
-    }],
+    },
+    // {
+    //   rotate: animation.value + 'deg'
+    // }
+  ],
     top:interpolate(Y.value,[0,-120],[45,-34],Extrapolate.CLAMP),
 
 
@@ -55,23 +56,31 @@ const Header = ({Y}) => {
   })
   const IconAnimation=useAnimatedStyle(()=>{
     return{
-    width:interpolate(Y.value,[0,-120],[40,0],Extrapolate.CLAMP),
-    height:interpolate(Y.value,[0,-120],[40,0],Extrapolate.CLAMP)
-
+  
+    transform:[{
+      scale:interpolate(Y.value,[0,-100],[1,0],Extrapolate.CLAMP)
+    }],
+    top:interpolate(Y.value,[0,-120],[(ImageHeight+55)/2,34],Extrapolate.CLAMP),
+    opacity:interpolate(Y.value,[0,-100],[1,0],Extrapolate.CLAMP)
     }
   },[Y.value])
   const ArrowAnimation=useAnimatedStyle(()=>{
     return{
-      top:interpolate(Y.value,[0,-120],[15,100],Extrapolate.CLAMP),
-      zIndex:100
+      top:interpolate(Y.value,[0,-120],[15,133],Extrapolate.CLAMP),
+      zIndex:100,
+      marginLeft:interpolate(Y.value,[0,-120],[0,27],Extrapolate.CLAMP)
     }
   },[])
   return (
     <>
     <Animated.View style={[styles.Container,ContainerHeight]}>
-    <AnimatedSimpleLine name="arrow-left" size={24} style={[styles.Icon,ArrowAnimation]} color="black" />
+      <Animated.View style={ArrowAnimation}> 
+      <SimpleLineIcons name="arrow-left" size={24} style={[styles.Icon]} color="black" />
+      </Animated.View>
     <Animated.View style={[styles.ImageView,WidthTransform]}>
-    <AnimatedIcon name="play" size={28} style={[styles.ImageIcon,IconAnimation]} color="white" />
+      <Animated.View style={[styles.ImageIcon,IconAnimation]}>
+      <Ionicons name="play" size={28} color="white" />
+      </Animated.View>
       <Animated.Image
       source={{uri:'https://t3.ftcdn.net/jpg/04/08/99/00/360_F_408990068_A8QzYIfgChv66j71u5eavcIKA6NC2ML3.jpg'}}
       style={[styles.Image,imageTrandformStyle]}
@@ -96,7 +105,7 @@ const styles = StyleSheet.create({
     position:'relative'
   },
   Icon:{
-    top:15
+    // top:15
   },
   Container:{
     display:"flex",
@@ -110,7 +119,8 @@ const styles = StyleSheet.create({
     height:270,
     backgroundColor:"#b2bdcf",
     borderBottomLeftRadius:150,
-    borderBottomRightRadius:150
+    borderBottomRightRadius:150,
+    left:-10
   },
   BottomIcon:{
     left:20,
@@ -126,5 +136,6 @@ const styles = StyleSheet.create({
     width:40,
     height:40,
     borderRadius:20,
+    
   }
 })
