@@ -24,11 +24,11 @@ const Header = ({Y}) => {
 
   const WidthTransform=useAnimatedStyle(()=>{
     return{
-      width:interpolate(Y.value,[0,-120],[270,415],Extrapolate.CLAMP),
+      width:interpolate(Y.value,[0,-120],[270,420],Extrapolate.CLAMP),
       height:interpolate(Y.value,[0,-120],[270,117],Extrapolate.CLAMP),
       top:interpolate(Y.value,[0,-120],[0,120],Extrapolate.CLAMP),
-      borderBottomLeftRadius:interpolate(Y.value,[0,-120],[150,75],Extrapolate.CLAMP),
-      borderBottomRightRadius:interpolate(Y.value,[0,-120],[150,75],Extrapolate.CLAMP),
+      borderBottomLeftRadius:interpolate(Y.value,[0,-120],[150,80],Extrapolate.CLAMP),
+      borderBottomRightRadius:interpolate(Y.value,[0,-120],[150,80],Extrapolate.CLAMP),
 
 
     }
@@ -66,9 +66,16 @@ const Header = ({Y}) => {
   },[Y.value])
   const ArrowAnimation=useAnimatedStyle(()=>{
     return{
-      top:interpolate(Y.value,[0,-120],[15,133],Extrapolate.CLAMP),
+      top:interpolate(Y.value,[0,-120],[19,133],Extrapolate.CLAMP),
       zIndex:100,
-      marginLeft:interpolate(Y.value,[0,-120],[0,27],Extrapolate.CLAMP)
+      marginLeft:interpolate(Y.value,[0,-120],[0,33],Extrapolate.CLAMP)
+    }
+  },[])
+  const DownLoadAnimation=useAnimatedStyle(()=>{
+    return{
+      top:interpolate(Y.value,[0,-120],[19,133],Extrapolate.CLAMP),
+      zIndex:100,
+      marginRight:interpolate(Y.value,[0,-120],[0,33],Extrapolate.CLAMP)
     }
   },[])
   return (
@@ -86,7 +93,9 @@ const Header = ({Y}) => {
       style={[styles.Image,imageTrandformStyle]}
       />
     </Animated.View>
-    <Feather name="download"style={{top:15}} size={24} color="black" />
+    <Animated.View style={DownLoadAnimation}>
+    <Feather name="download" size={24} color="black" />
+      </Animated.View>
     </Animated.View>
     <Fontisto name="arrow-expand" style={styles.BottomIcon} size={24} color="black" />
     </>
@@ -104,9 +113,7 @@ const styles = StyleSheet.create({
     alignSelf:'center',
     position:'relative'
   },
-  Icon:{
-    // top:15
-  },
+
   Container:{
     display:"flex",
     flexDirection:'row',
@@ -120,7 +127,7 @@ const styles = StyleSheet.create({
     backgroundColor:"#b2bdcf",
     borderBottomLeftRadius:150,
     borderBottomRightRadius:150,
-    left:-10
+   
   },
   BottomIcon:{
     left:20,

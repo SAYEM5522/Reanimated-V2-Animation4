@@ -27,6 +27,9 @@ const TopView = () => {
     },
     onEnd: (_) => {
       Y.value = withSpring(0,config);
+      if(Y.value<-85){
+        Y.value=withSpring(-200)
+      }
     },
   });
   const animatedStyle = useAnimatedStyle(() => {
