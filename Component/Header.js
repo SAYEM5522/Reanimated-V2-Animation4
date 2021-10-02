@@ -12,7 +12,7 @@ const BorderRadious=100
 const Header = ({Y}) => {
   const animation = useSharedValue(0)
 
-
+ const SqureAnimation=Animated.createAnimatedComponent(Fontisto);
   useEffect(()=>{
     animation.value = withRepeat(withTiming(360,{
       duration:10000
@@ -78,6 +78,12 @@ const Header = ({Y}) => {
       marginRight:interpolate(Y.value,[0,-120],[0,33],Extrapolate.CLAMP)
     }
   },[])
+  const BottomIconAnimation =useAnimatedStyle(()=>{
+    return{
+
+     opacity:interpolate(Y.value,[0,-20],[1,0],Extrapolate.CLAMP),
+    }
+  },[])
   return (
     <>
     <Animated.View style={[styles.Container,ContainerHeight]}>
@@ -97,7 +103,9 @@ const Header = ({Y}) => {
     <Feather name="download" size={24} color="black" />
       </Animated.View>
     </Animated.View>
-    <Fontisto name="arrow-expand" style={styles.BottomIcon} size={24} color="black" />
+    <Animated.View style={BottomIconAnimation}>
+    <Fontisto name="arrow-expand" style={[styles.BottomIcon]} size={24} color="black" />
+    </Animated.View>
     </>
   )
 }
