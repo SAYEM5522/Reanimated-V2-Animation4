@@ -4,6 +4,7 @@ import { PanGestureHandler } from 'react-native-gesture-handler'
 import Animated, { Extrapolate, interpolate, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated'
 import TrackList from './TrackList'
 import { Fontisto } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 const ViewHeight=380
 const Item=[{
@@ -37,6 +38,7 @@ const Item=[{
 
 const BottomView2 = () => {
   const Y = useSharedValue(0);
+  const Tab=useSharedValue(false);
   const config={
     mass:0.5,
     damping:16,
@@ -73,10 +75,19 @@ const BottomView2 = () => {
   });
   const Icon1Animation=useAnimatedStyle(()=>{
     return{
-      marginLeft:interpolate(Y.value,[0,220],[400,240],Extrapolate.CLAMP),
+      marginLeft:interpolate(Y.value,[0,220],[400,250],Extrapolate.CLAMP),
       opacity:interpolate(Y.value,[0,190,230],[0,0,1],Extrapolate.CLAMP),
       transform:[{
         scale:interpolate(Y.value,[0,190,230],[0,0.5,1],Extrapolate.CLAMP),
+      }]
+    }
+  })
+  const Icon2Animation=useAnimatedStyle(()=>{
+    return{
+      marginTop:interpolate(Y.value,[0,220],[300,-35],Extrapolate.CLAMP),
+      opacity:withSpring(interpolate(Y.value,[0,200,230],[0,0,1],Extrapolate.CLAMP),config),
+      transform:[{
+        scale:interpolate(Y.value,[0,190,230],[0,0.4,1],Extrapolate.CLAMP),
       }]
     }
   })
@@ -94,6 +105,9 @@ const BottomView2 = () => {
     <Animated.View style={[styles.Icon1,Icon1Animation]} >
     <Fontisto name="arrow-expand" size={24} color="black" />
     </Animated.View>
+      <Animated.View style={[styles.Icon2,Icon2Animation]}>
+      <AntDesign name="pause" size={32} color="white" />
+      </Animated.View>
     </Animated.View>
     </PanGestureHandler>
   )
@@ -120,5 +134,15 @@ const styles = StyleSheet.create({
   Icon1:{
     // marginLeft:400,
     marginTop:-290
+  },
+  Icon2:{
+    padding:8,
+    borderRadius:11,
+    backgroundColor:'#402ba7',
+    width:50,
+    height:50,
+    marginLeft:300,
+    
+    
   }
 })

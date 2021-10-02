@@ -22,7 +22,7 @@ const TrackList = ({Y,index,song,name,img}) => {
   const imageTrandform=useAnimatedStyle(()=>{
     return{
       transform:[{
-        translateX:withSpring(interpolate(Y.value,[0,200],[0,(index)*45],Extrapolate.CLAMP),config)
+        translateX:withSpring(interpolate(Y.value,[0,200],[0,(index)*48],Extrapolate.CLAMP),config)
       }],
       top:(interpolate(Y.value,[0,200],[0,-(index)*80],Extrapolate.CLAMP))
     }
