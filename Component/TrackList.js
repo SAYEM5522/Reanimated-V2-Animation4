@@ -4,25 +4,25 @@ import { AntDesign } from '@expo/vector-icons';
 import Animated, { Extrapolate, interpolate, useAnimatedStyle, withSpring } from 'react-native-reanimated';
 const TrackList = ({Y,index,song,name,img}) => {
   const config={
-    mass:0.5,
-    damping:16,
+    mass:0.01,
+    damping:10,
     overshootClamping:false,
-    restDisplacementThreshold:0,
-    restSpeedThreshold:0.3
+    restDisplacementThreshold:10,
+    restSpeedThreshold:0.1
   }
 
   const ListTransForm=useAnimatedStyle(()=>{
     return{
       transform:[{
         
-        translateX:withSpring(interpolate(Y.value,[0,200],[0,(index==0||index==2||index==3)?(index==2||index==3)?(index==3)?index*60:index*70:300:(index)*180],Extrapolate.CLAMP),config)
+        translateX:withSpring(interpolate(Y.value,[0,200],[0,(index==0||index==2||index==3)?(index==2||index==3)?(index==3)?index*60:index*85:300:(index)*215],Extrapolate.CLAMP),config)
       }]
     }
   })
   const imageTrandform=useAnimatedStyle(()=>{
     return{
       transform:[{
-        translateX:withSpring(interpolate(Y.value,[0,200],[0,(index)*35],Extrapolate.CLAMP),config)
+        translateX:withSpring(interpolate(Y.value,[0,200],[0,(index)*45],Extrapolate.CLAMP),config)
       }],
       top:(interpolate(Y.value,[0,200],[0,-(index)*80],Extrapolate.CLAMP))
     }

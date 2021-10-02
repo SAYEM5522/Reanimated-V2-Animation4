@@ -1,8 +1,10 @@
 import React, { memo } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { PanGestureHandler } from 'react-native-gesture-handler'
-import Animated, { useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated'
+import Animated, { Extrapolate, interpolate, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated'
 import TrackList from './TrackList'
+import { Fontisto } from '@expo/vector-icons';
+
 const ViewHeight=380
 const Item=[{
   id:'1',
@@ -69,6 +71,15 @@ const BottomView2 = () => {
       ],
     };
   });
+  const Icon1Animation=useAnimatedStyle(()=>{
+    return{
+      marginLeft:interpolate(Y.value,[0,220],[400,240],Extrapolate.CLAMP),
+      opacity:interpolate(Y.value,[0,190,230],[0,0,1],Extrapolate.CLAMP),
+      transform:[{
+        scale:interpolate(Y.value,[0,190,230],[0,0.5,1],Extrapolate.CLAMP),
+      }]
+    }
+  })
   return (
     <PanGestureHandler onGestureEvent={gestureHandler}>
     <Animated.View style={[styles.Container,animatedStyle]}>
@@ -80,7 +91,9 @@ const BottomView2 = () => {
         )
       })
     }
-
+    <Animated.View style={[styles.Icon1,Icon1Animation]} >
+    <Fontisto name="arrow-expand" size={24} color="black" />
+    </Animated.View>
     </Animated.View>
     </PanGestureHandler>
   )
@@ -103,5 +116,9 @@ const styles = StyleSheet.create({
     borderRadius:5,
     top:8,
     marginBottom:5
+  },
+  Icon1:{
+    // marginLeft:400,
+    marginTop:-290
   }
 })
