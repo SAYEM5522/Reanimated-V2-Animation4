@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import Animated, { Extrapolate, interpolate, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated'
 import Header from './Header'
+import MainView from './MainView'
 const TopViewHeight=330
 const TopView = () => {
   const Y = useSharedValue(0);
@@ -48,12 +49,15 @@ const TopView = () => {
     }
   })
   return (
+    <>
     <PanGestureHandler onGestureEvent={gestureHandler}>
     <Animated.View style={[styles.Container,animatedStyle]}>
       <Header Y={Y}/>
       <Animated.View style={[styles.RoundView,ViewAnimation]}/>
     </Animated.View>
     </PanGestureHandler>
+    <MainView Y={Y}/>
+    </>
   )
 }
 

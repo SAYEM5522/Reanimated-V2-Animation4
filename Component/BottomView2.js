@@ -1,10 +1,11 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { PanGestureHandler } from 'react-native-gesture-handler'
 import Animated, { Extrapolate, interpolate, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated'
 import TrackList from './TrackList'
 import { Fontisto } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import TAB from './TAB'
 
 const ViewHeight=380
 const Item=[{
@@ -38,7 +39,7 @@ const Item=[{
 
 const BottomView2 = () => {
   const Y = useSharedValue(0);
-  const Tab=useSharedValue(false);
+  const [Tab,setTab]=useState(false)
   const config={
     mass:0.5,
     damping:16,
@@ -91,6 +92,11 @@ const BottomView2 = () => {
       }]
     }
   })
+  const onPress=()=>{
+    'worklet';
+ 
+    setTab(!Tab)
+  }
   return (
     <PanGestureHandler onGestureEvent={gestureHandler}>
     <Animated.View style={[styles.Container,animatedStyle]}>
@@ -106,7 +112,10 @@ const BottomView2 = () => {
     <Fontisto name="arrow-expand" size={24} color="black" />
     </Animated.View>
       <Animated.View style={[styles.Icon2,Icon2Animation]}>
-      <AntDesign name="pause" size={32} color="white" />
+      <AntDesign name="pause" onPress={onPress} size={32} color="white" />
+      {
+        Tab?<TAB Tab={Tab}/>:null
+      }
       </Animated.View>
     </Animated.View>
     </PanGestureHandler>

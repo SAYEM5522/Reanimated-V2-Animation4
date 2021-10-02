@@ -1,10 +1,10 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-const MainView = () => {
+const MainView = ({Y}) => {
   return (
     <View>
-      <Text>MainView</Text>
+      <Text>{Y.value}</Text>
     </View>
   )
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
 import Animated, { Extrapolate, interpolate, useAnimatedStyle, withSpring } from 'react-native-reanimated';
+import { Feather } from '@expo/vector-icons';
 const TrackList = ({Y,index,song,name,img}) => {
   const config={
     mass:0.01,
@@ -39,7 +40,11 @@ const TrackList = ({Y,index,song,name,img}) => {
        <Text style={styles.SongName}>{name} </Text>
        <Text style={styles.SingerName}>{song}</Text>
      </View>
+     {
+     
+     (index==0)?<Feather name="bar-chart-2" size={30} style={{left:100}} color="black" />:
      <AntDesign name="hearto" style={styles.Icon} size={24} color="black" />
+     }
      </Animated.View>
     </View>
   )

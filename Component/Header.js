@@ -12,7 +12,6 @@ const BorderRadious=100
 const Header = ({Y}) => {
   const animation = useSharedValue(0)
 
- const SqureAnimation=Animated.createAnimatedComponent(Fontisto);
   useEffect(()=>{
     animation.value = withRepeat(withTiming(360,{
       duration:10000
@@ -98,6 +97,8 @@ const Header = ({Y}) => {
       source={{uri:'https://t3.ftcdn.net/jpg/04/08/99/00/360_F_408990068_A8QzYIfgChv66j71u5eavcIKA6NC2ML3.jpg'}}
       style={[styles.Image,imageTrandformStyle]}
       />
+    
+
     </Animated.View>
     <Animated.View style={DownLoadAnimation}>
     <Feather name="download" size={24} color="black" />
