@@ -21,6 +21,5 @@ const styles = StyleSheet.create({
     backgroundColor:'lightgray',
     alignSelf:'center',
     borderRadius:5,
-    top:8
   }
 })
