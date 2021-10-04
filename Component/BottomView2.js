@@ -59,7 +59,7 @@ const BottomView2 = () => {
       Y.value = ctx.startY + event.translationY;
     },
     onEnd: (_) => {
-      Y.value = withSpring(0);
+      Y.value = withSpring(0,config);
       if(Y.value>100){
         Y.value=withSpring(235,config)
       }
