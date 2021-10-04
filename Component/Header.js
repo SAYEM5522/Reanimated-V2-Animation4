@@ -38,9 +38,9 @@ const Header = ({Y}) => {
       scale:interpolate(Y.value,[0,-120],[1,0.4],Extrapolate.CLAMP),
       
     },
-    // {
-    //   rotate: animation.value + 'deg'
-    // }
+    {
+      rotate: animation.value + 'deg'
+    }
   ],
     top:interpolate(Y.value,[0,-120],[45,-34],Extrapolate.CLAMP),
 

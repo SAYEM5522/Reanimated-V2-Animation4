@@ -61,11 +61,9 @@ const MainView = ({Y}) => {
     <AntDesign name="hearto" style={styles.Icon} size={24} color="black" />
     </Animated.View>
    </View>
-   {/* <Animated.View style={TextAnimation}> */}
    <Animated.Text style={[styles.MainViewText1,TextAnimation1]}>Do you like my new work. Keep an eye on my dribbble</Animated.Text>
    <Animated.Text style={[styles.MainViewText2,TextAnimation2]}>Copycat trying to cop my manner </Animated.Text>
    <Animated.Text style={[styles.MainViewText3,TextAnimation3]}>Do you like my new work.</Animated.Text>
-   {/* </Animated.View> */}
  
 
    </>
