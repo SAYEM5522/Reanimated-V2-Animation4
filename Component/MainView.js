@@ -20,10 +20,15 @@ const MainView = ({Y}) => {
     return{
       transform:[{
         translateY:interpolate(Y.value,[0,-120],[0,-110],Extrapolate.CLAMP)
-      }]
+      },
+      {
+        translateX:interpolate(Y.value,[0,-120],[0,-45],Extrapolate.CLAMP)
+      }
+    ]
     }
   })
   return (
+    <>
     <View style={styles.Container}>
     <Animated.Image
     source={{uri:"https://t3.ftcdn.net/jpg/04/08/99/00/360_F_408990068_A8QzYIfgChv66j71u5eavcIKA6NC2ML3.jpg"}}
@@ -37,6 +42,11 @@ const MainView = ({Y}) => {
     <AntDesign name="hearto" style={styles.Icon} size={24} color="black" />
     </Animated.View>
    </View>
+   <Text style={styles.MainViewText1}>Do you like my new work. Keep an eye on my dribbble</Text>
+   <Text style={styles.MainViewText2}>Copycat trying to cop my manner </Text>
+   <Text style={styles.MainViewText3}>Do you like my new work.</Text>
+
+   </>
   )
 }
 
@@ -62,7 +72,8 @@ const styles = StyleSheet.create({
   SongName:{
     fontSize:16,
     fontWeight:'bold',
-    left:8
+    left:8,
+    color:"#402ba7",
   },
   SingerName:{
     fontSize:15,
@@ -83,5 +94,29 @@ const styles = StyleSheet.create({
     borderTopLeftRadius:50,
     borderBottomLeftRadius:50
 
+  },
+  MainViewText1:{
+    color:"gray",
+    fontSize:16,
+    fontWeight:'600',
+    width:"70%",
+    alignSelf:'center',
+    top:-70
+  },
+  MainViewText2:{
+    color:"#402ba7",
+    fontSize:16,
+    fontWeight:'bold',
+    width:"70%",
+    alignSelf:'center',
+    top:-60
+  },
+  MainViewText3:{
+    color:"gray",
+    fontSize:16,
+    fontWeight:'300',
+    width:"70%",
+    alignSelf:'center',
+    top:-55
   }
 })

@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     height:ViewHeight,
     backgroundColor:'#fff',
     borderTopLeftRadius:50,
-    top:-ViewHeight+40
+    top:-(ViewHeight+41)
   },
   RoundView:{
     width:80,

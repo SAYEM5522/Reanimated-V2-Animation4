@@ -91,6 +91,6 @@ const styles = StyleSheet.create({
     height:ViewHeight,
     backgroundColor:'#fff',
     borderTopLeftRadius:50,
-    top:40
+    top:-(41)
   }
 })

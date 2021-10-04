@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     height:320,
   },
   RoundView:{
-    width:95,
+    width:107,
     height:6.5,
     backgroundColor:'lightgray',
     alignSelf:'center',
