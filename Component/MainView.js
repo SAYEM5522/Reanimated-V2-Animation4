@@ -1,9 +1,10 @@
 import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
-import Animated, { Extrapolate, interpolate, useAnimatedStyle } from 'react-native-reanimated';
+import Animated, { Extrapolate, interpolate, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 const MainView = ({Y}) => {
+  const AnimatedText=Animated.createAnimatedComponent(Text)
   const imageTrandform=useAnimatedStyle(()=>{
     return{
       transform:[{
@@ -27,6 +28,24 @@ const MainView = ({Y}) => {
     ]
     }
   })
+  const TextAnimation1=useAnimatedStyle(()=>{
+   
+    return{
+      opacity:(Y.value<-92)?withTiming(1,{duration:500}):withTiming(0)
+    }
+  })
+  const TextAnimation2=useAnimatedStyle(()=>{
+   
+    return{
+      opacity:(Y.value<-92)?withTiming(1,{duration:200}):withTiming(0)
+    }
+  })
+  const TextAnimation3=useAnimatedStyle(()=>{
+   
+    return{
+      opacity:(Y.value<-92)?withTiming(1,{duration:500}):withTiming(0)
+    }
+  })
   return (
     <>
     <View style={styles.Container}>
@@ -42,9 +61,12 @@ const MainView = ({Y}) => {
     <AntDesign name="hearto" style={styles.Icon} size={24} color="black" />
     </Animated.View>
    </View>
-   <Text style={styles.MainViewText1}>Do you like my new work. Keep an eye on my dribbble</Text>
-   <Text style={styles.MainViewText2}>Copycat trying to cop my manner </Text>
-   <Text style={styles.MainViewText3}>Do you like my new work.</Text>
+   {/* <Animated.View style={TextAnimation}> */}
+   <Animated.Text style={[styles.MainViewText1,TextAnimation1]}>Do you like my new work. Keep an eye on my dribbble</Animated.Text>
+   <Animated.Text style={[styles.MainViewText2,TextAnimation2]}>Copycat trying to cop my manner </Animated.Text>
+   <Animated.Text style={[styles.MainViewText3,TextAnimation3]}>Do you like my new work.</Animated.Text>
+   {/* </Animated.View> */}
+ 
 
    </>
   )
